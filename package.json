@@ -1,0 +1,27 @@
+{
+  "name": "string-calculator-tdd-incubyte",
+  "version": "1.0.0",
+  "description": "test assignment for Incubyte",
+  "homepage": "https://github.com/Kritikam77/string-calculator-tdd-incubyte#readme",
+  "bugs": {
+    "url": "https://github.com/Kritikam77/string-calculator-tdd-incubyte/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kritikam77/string-calculator-tdd-incubyte.git"
+  },
+  "license": "ISC",
+  "author": "Kritika",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.2",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
+  }
+}
