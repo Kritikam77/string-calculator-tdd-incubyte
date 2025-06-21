@@ -1,30 +1,34 @@
 function parseNumbers(input: string): number[] {
   let numbersSection = input;
-  let delimiterPattern = /[,\n]/;
+  let delimiterPattern = getDelimiterPattern(input);
 
+  // remove delimiter declaration if present
   if (input.startsWith("//")) {
     const parts = input.split("\n");
-    const delimiterDeclaration = parts[0];
     numbersSection = parts.slice(1).join("\n");
-
-    const customDelimiter = delimiterDeclaration.substring(2);
-    delimiterPattern = new RegExp(`[${escapeRegExp(customDelimiter)}\n]`);
   }
 
   const numbers = numbersSection
     .split(delimiterPattern)
     .map((num) => parseInt(num));
 
-    const negatives = numbers.filter((n) => n < 0);
-    if (negatives.length > 0) {
-      throw new Error(`negatives not allowed: ${negatives.join(",")}`);
-    }
-    
+  const negatives = numbers.filter((n) => n < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negatives not allowed: ${negatives.join(",")}`);
+  }
 
   return numbers;
 }
 
-//utility to escape special characters in custom delimiters
+function getDelimiterPattern(input: string): RegExp {
+  if (input.startsWith("//")) {
+    const delimiterLine = input.split("\n")[0];
+    const customDelimiter = delimiterLine.substring(2);
+    return new RegExp(`[${escapeRegExp(customDelimiter)}\n]`);
+  }
+  return /[,\n]/;
+}
+
 function escapeRegExp(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
