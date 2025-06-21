@@ -39,4 +39,9 @@ describe('String Calculator',()=>{
     test('throws error for single negative number',()=>{
         expect(()=>add("-1")).toThrow("negatives not allowed: -1")
     })
+
+    ///test for multiple negative numbers
+    test('throws error listing all negative numbers',()=>{
+        expect(()=>add("2,-4,3,-9")).toThrow("negatives not allowed: -4,-9")
+    })
 })
