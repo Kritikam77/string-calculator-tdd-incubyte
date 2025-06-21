@@ -15,10 +15,11 @@ function parseNumbers(input: string): number[] {
     .split(delimiterPattern)
     .map((num) => parseInt(num));
 
-  const firstNegative = numbers.find((n) => n < 0);
-  if (firstNegative !== undefined) {
-    throw new Error(`negatives not allowed: ${firstNegative}`);
-  }
+    const negatives = numbers.filter((n) => n < 0);
+    if (negatives.length > 0) {
+      throw new Error(`negatives not allowed: ${negatives.join(",")}`);
+    }
+    
 
   return numbers;
 }
