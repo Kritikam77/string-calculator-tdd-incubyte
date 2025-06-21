@@ -11,4 +11,9 @@ describe('String Calculator',()=>{
     test('returns number for single input value',()=>{
         expect(add("5")).toBe(5)
     })
+
+    //test for 2 comma-separated numbers
+    test('returns sum for two comma-separated numbers',()=>{
+        expect(add("1,2")).toBe(3)
+    })
 })
