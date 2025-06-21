@@ -37,6 +37,6 @@ describe('String Calculator',()=>{
 
     //test for throwing error on negative number
     test('throws error for single negative number',()=>{
-        expect(()=>add("-1")).toThrow("negativees not allowed: -1")
+        expect(()=>add("-1")).toThrow("negatives not allowed: -1")
     })
 })
