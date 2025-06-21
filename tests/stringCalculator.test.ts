@@ -34,4 +34,9 @@ describe('String Calculator',()=>{
         expect(add("//;\n1;2")).toBe(3);
         expect(add("//|\n4|5|6")).toBe(15)
     })
+
+    //test for throwing error on negative number
+    test('throws error for single negative number',()=>{
+        expect(()=>add("-1")).toThrow("negativees not allowed: -1")
+    })
 })
