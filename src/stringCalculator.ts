@@ -1,6 +1,25 @@
 function parseNumbers(input:string):number[]{
-  const delimiters=/[,\n]/;
-  return input.split(delimiters).map(num=>parseInt(num))
+  let numbersSection=input;
+  let delimiterPattern=/[,\n]/;
+
+  //check for custom delimiter syntax
+  if(input.startsWith("//")){
+    const parts=input.split("\n")
+    const delimiterDeclaration=parts[0];
+    numbersSection=parts.slice(1).join('\n')
+
+    const customDelimiter=delimiterDeclaration.substring(2); 
+    delimiterPattern = new RegExp(`[${escapeRegExp(customDelimiter)}\n]`);
+  }
+
+  return numbersSection
+    .split(delimiterPattern)
+    .map(num=>parseInt(num))
+}
+
+//utility to escape special characters in custom delimiters
+function escapeRegExp(str:string):string{
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 export function add(numbers:string):number{
