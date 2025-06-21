@@ -16,4 +16,10 @@ describe('String Calculator',()=>{
     test('returns sum for two comma-separated numbers',()=>{
         expect(add("1,2")).toBe(3)
     })
+
+    //test for multiple comma-separated numbers
+    test('returns sum for multiple comma-separated numbers',()=>{
+        expect(add("1,2,3,4,5")).toBe(15)
+        expect(add("10,20,30")).toBe(60)
+    })
 })
