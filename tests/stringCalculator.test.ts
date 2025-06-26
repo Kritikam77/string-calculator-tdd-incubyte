@@ -44,4 +44,9 @@ describe('String Calculator',()=>{
     test('throws error listing all negative numbers',()=>{
         expect(()=>add("2,-4,3,-9")).toThrow("negatives not allowed: -4,-9")
     })
+
+    //test for * , and if we have a * as a delimiter, we multiply instead of adding
+    test("uses multiplaction when custom delimiter is *",()=>{
+        expect(add("//*\n2*3*4")).toBe(24);
+    })
 })

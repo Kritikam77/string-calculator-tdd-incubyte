@@ -36,6 +36,12 @@ function escapeRegExp(str: string): string {
 export function add(numbers: string): number {
   if (numbers === "") return 0;
 
+  const isMultiplication=numbers.startsWith("//*\n");
+
   const nums = parseNumbers(numbers);
+
+  if(isMultiplication){
+    return nums.reduce((product, curr) => product * curr, 1);
+  }
   return nums.reduce((sum, curr) => sum + curr, 0);
 }
